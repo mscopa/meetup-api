@@ -18,9 +18,14 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'middle_name',
+        'last_name',
         'email',
         'password',
+        'meetup_session_id',
+        'role',
+        'attended',
     ];
 
     /**
@@ -43,6 +48,15 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'attended' => 'boolean',
         ];
+    }
+
+    /**
+     * Get the meetup session that owns the user.
+     */
+    public function meetupSession()
+    {
+        return $this->belongsTo(MeetupSession::class);
     }
 }
