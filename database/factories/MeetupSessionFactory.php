@@ -17,7 +17,8 @@ class MeetupSessionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->unique()->city() . '-' . fake()->unique()->city(),
+            'location' => fake()->address(),
         ];
     }
 }

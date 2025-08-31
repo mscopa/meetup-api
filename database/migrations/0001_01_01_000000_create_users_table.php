@@ -21,7 +21,12 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->string('role')->default('Participante');
+            $table->string('role')->default('participante');
+            $table->string('gender')->nullable();
+            $table->string('dietary_conditions')->nullable();
+            $table->string('medical_conditions')->nullable();
+            $table->string('tshirt_size')->nullable();
+            $table->string('approval_status')->nullable();
             $table->boolean('attended')->default(false);
             $table->timestamps();
         });
