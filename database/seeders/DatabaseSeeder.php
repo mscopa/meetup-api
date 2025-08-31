@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call([
+            FacilitatorSeeder::class,
+        ]);
         // 1. Creamos los puzzles. Serán los mismos para todas las sesiones y compañías.
         // Usamos una colección para poder manipularlos fácilmente más adelante.
         $puzzles = Puzzle::factory()->count(5)->create();
@@ -39,7 +42,7 @@ class DatabaseSeeder extends Seeder
                 
                 // Usamos attach() para crear los registros en la tabla pivote `company_puzzles`.
                 // El segundo argumento es un array con los valores para las columnas extra.
-                $company->puzzles()->attach($puzzlesToAttach, ['is_unlocked' => false]);
+                $company->puzzles()->attach($puzzlesToAttach, ['is_unlocked' => true]);
             }
 
             // EXTRA: Llenamos la tabla `participants`
@@ -57,5 +60,8 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
+        $this->call([
+            ScheduleSeeder::class,
+        ]);
     }
 }

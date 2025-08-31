@@ -26,12 +26,12 @@ class UserPuzzleAttemptController extends Controller
         $user = $request->user();
 
         // Verificación: ¿Ya existe un intento para este usuario y puzzle?
-        $existingAttempt = UserPuzzleAttempt::where('user_id', $user->id)
-                                            ->where('puzzle_id', $puzzle->id)
-                                            ->exists();
-        if ($existingAttempt) {
-            return response()->json(['message' => 'Ya has iniciado un intento para este puzzle.'], 409); // 409 Conflict
-        }
+        // $existingAttempt = UserPuzzleAttempt::where('user_id', $user->id)
+        //                                     ->where('puzzle_id', $puzzle->id)
+        //                                     ->exists();
+        // if ($existingAttempt) {
+        //     return response()->json(['message' => 'Ya has iniciado un intento para este puzzle.'], 409); // 409 Conflict
+        // }
 
         // Si todo está bien, creamos el intento
         $attempt = UserPuzzleAttempt::create([

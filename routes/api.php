@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\PuzzleController;
 use App\Http\Controllers\Api\UserPuzzleAttemptController;
+use App\Http\Controllers\Api\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     // ... tus otras rutas
     Route::get('/profile-header', [ProfileController::class, 'getHeaderData']);
+    Route::get('/schedule', [ScheduleController::class, 'getSchedule']);
     Route::get('/puzzles', [PuzzleController::class, 'index']);
     // 2. Obtiene los datos de un puzzle específico para empezar a jugar.
     Route::get('/puzzles/{puzzle}', [PuzzleController::class, 'show']);

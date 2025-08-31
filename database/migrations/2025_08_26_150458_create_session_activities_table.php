@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('session_activities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('activity_id')->constrained('activities');
-            $table->date('start_time');
-            $table->date('end_time')->nullable();
+            $table->dateTime('start_time');
+            $table->dateTime('end_time')->nullable();
             $table->timestamps();
         });
     }
