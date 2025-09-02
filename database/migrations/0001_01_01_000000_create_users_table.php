@@ -14,25 +14,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('meetup_session_id')->nullable()->constrained('meetup_sessions');
-            $table->string('first_name');
-            $table->string('middle_name')->nullable();
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('username');
             $table->string('password');
             $table->rememberToken();
-            $table->string('role')->default('participante');
-            $table->string('gender')->nullable();
-            $table->string('dietary_conditions')->nullable();
-            $table->string('medical_conditions')->nullable();
-            $table->string('tshirt_size')->nullable();
-            $table->string('approval_status')->nullable();
-            $table->boolean('attended')->default(false);
             $table->timestamps();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });

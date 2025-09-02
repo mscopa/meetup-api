@@ -23,24 +23,22 @@ class ScheduleSeeder extends Seeder
         // Actividad 1: Llegada
         $llegada = Activity::create([
             'meetup_session_id' => 1,
-            'facilitator_id' => 1,
-            'title' => 'Llegada y Registro',
+            'title' => 'Llegada de los jóvenes',
             'type' => 'Logística',
-            'duration' => 60,
+            'duration' => 30,
             'modality' => 'Todos'
         ]);
 
         SessionActivity::create([
             'activity_id' => $llegada->id,
-            'start_time' => Carbon::create(2025, 8, 31, 16, 0, 0), // 31 de Agosto 2025 a las 16:00
-            'end_time' => Carbon::create(2025, 8, 31, 17, 0, 0),
+            'start_time' => Carbon::create(2025, 9, 6, 8, 0, 0), // 6 de Septiembre de 2025 a las 08:00
+            'end_time' => Carbon::create(2025, 9, 6, 8, 30, 0),
         ]);
 
 
         // Actividad 2: Devocional
         $devocional = Activity::create([
             'meetup_session_id' => 1,
-            'facilitator_id' => 1,
             'title' => 'Devocional de Apertura',
             'type' => 'Espiritual',
             'duration' => 30,
@@ -57,7 +55,6 @@ class ScheduleSeeder extends Seeder
         // Actividad 3: Juego
         $juego = Activity::create([
             'meetup_session_id' => 1,
-            'facilitator_id' => 1,
             'title' => 'Juego: Tuberías y Monedas',
             'type' => 'Juego',
             'duration' => 90,

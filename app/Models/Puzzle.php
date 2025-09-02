@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Puzzle extends Model
 {
@@ -14,19 +16,19 @@ class Puzzle extends Model
         'title',
         'description',
         'type',
-        'content',
+        'is_enabled'
     ];
-    protected $casts = [
-        'content' => 'array',
-    ];
-    public function companies() :BelongsToMany
+    
+    public function user() : BelongsTo
     {
-        return $this->belongsToMany(Company::class, 'company_puzzles')
-            ->withPivot('is_unlocked')
-            ->withTimestamps();
+        return $this->belongsTo(User::class);
     }
-    public function userAttempts()
+    public function crossword_words(): HasMany
     {
-        return $this->hasMany(UserPuzzleAttempt::class);
+        return $this->hasMany(CrosswordWord::class);
+    }
+    public function word_search_words(): HasMany
+    {
+        return $this->hasMany(WordSearchWord::class);
     }
 }

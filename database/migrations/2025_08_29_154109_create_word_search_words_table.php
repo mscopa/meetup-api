@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company_puzzles', function (Blueprint $table) {
+        Schema::create('word_search_words', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained()->onDelete('cascade');
-            $table->foreignId('puzzle_id')->constrained()->onDelete('cascade');
-            $table->boolean('is_unlocked')->default(true);
+            $table->foreignId('puzzle_id')->constrained('puzzles');
+            $table->string('word');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_puzzles');
+        Schema::dropIfExists('word_search_words');
     }
 };

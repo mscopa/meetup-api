@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use App\Enums\UserRole;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -25,18 +23,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'meetup_session_id',
-        'first_name',
-        'middle_name',
-        'last_name',
-        'email',
+        'username',
         'password',
-        'gender',
-        'dietary_conditions',
-        'medical_conditions',
-        'tshirt_size',
-        'approval_status',
-        'role',
-        'attended',
     ];
 
     /**
@@ -57,9 +45,7 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'role' => UserRole::class,
         ];
     }
 
@@ -70,22 +56,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo(MeetupSession::class);
     }
-    public function puzzleAttempts() : HasMany
+    protected function administrator(): HasOne
     {
-        return $this->hasMany(UserPuzzleAttempt::class);
+        return $this->hasOne(Administrator::class);
     }
-    public function participations(): HasMany
+    protected function company(): HasOne
     {
-        return $this->hasMany(Participant::class);
+        return $this->hasOne(Company::class);
     }
-    public function participation(): HasOne
+    public function puzzles(): HasMany
     {
-        return $this->hasOne(Participant::class);
-    }
-    protected function company(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => $this->participation?->company,
-        );
+        return $this->hasMany(Puzzle::class);
     }
 }

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('activity_materials', function (Blueprint $table) {
+        Schema::create('earnings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('activity_id')->constrained('activities');
-            $table->string('material_name');
-            $table->integer('quantity')->default(1);
-            $table->boolean('is_optional')->default(false);
+            $table->foreignId('administrator_id')->constrained('administrators');
+            $table->foreignId('company_id')->constrained('companies');
+            $table->string('reason');
+            $table->unsignedInteger('coin_amount');
+            $table->unsignedInteger('score_amount');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('activity_materials');
+        Schema::dropIfExists('earnings');
     }
 };

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('puzzles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('type');
-            $table->json('content');
+            $table->boolean(false);
             $table->timestamps();
         });
     }

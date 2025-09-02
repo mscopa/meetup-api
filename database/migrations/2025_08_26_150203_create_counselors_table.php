@@ -15,6 +15,17 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('company_id')->constrained('companies');
+            $table->string('first_name');
+            $table->string('middle_name')->nullable();
+            $table->string('last_name');
+            $table->string('type'); // Ex: Consejero, Auxiliar;
+            $table->string('gender')->nullable();
+            $table->string('dietary_conditions')->nullable();
+            $table->string('medical_conditions')->nullable();
+            $table->string('tshirt_size')->nullable();
+            $table->string('approval_status')->nullable();
+            $table->boolean('attended')->default(false);
+            $table->boolean('checkin')->default(false);
             $table->timestamps();
         });
     }

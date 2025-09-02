@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('meetup_session_id')->constrained('meetup_sessions');
-            $table->foreignId('facilitator_id')->constrained('facilitators');
             $table->string('title'); // Ex: Tuberías y Monedas
             $table->string('type'); // Ex: Juego, Devocional, Seminario, etc.
-            $table->integer('duration')->nullable();
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
             $table->string('modality')->nullable(); // Ex: 2, 4, 12 compañías
             $table->timestamps();
         });

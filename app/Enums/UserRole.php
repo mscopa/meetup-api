@@ -9,4 +9,5 @@ enum UserRole: string
     case Consejero = 'consejero';
     case Facilitador = 'facilitador';
     case Participante = 'participante';
+    case Compañia = 'Company';
 }

@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('participants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('company_id')->constrained('companies');
-            $table->integer('coins')->default(0);
+            $table->string('first_name');
+            $table->string('middle_name')->nullable();
+            $table->string('last_name');
+            $table->string('gender')->nullable();
+            $table->string('dietary_conditions')->nullable();
+            $table->string('medical_conditions')->nullable();
+            $table->string('tshirt_size')->nullable();
+            $table->string('approval_status')->nullable();
+            $table->boolean('attended')->default(false);
             $table->boolean('is_member')->default(true);
             $table->boolean('kit_delivered')->default(false);
             $table->timestamps();

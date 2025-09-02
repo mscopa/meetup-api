@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SessionActivity;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Activity;
+use App\Http\Resources\ActivityResource;
 
 class ScheduleController extends Controller
 {
@@ -43,5 +45,14 @@ class ScheduleController extends Controller
             throw $th;
         }
         
+    }
+    public function index(Request $request)
+    {
+        $user = Auth::user();
+        $activities = Activity::where('meetup_session_id', $user->meetup_session_id)
+                                ->with('activityDetail.activityDetailContents')
+                                ->orderBy('start_date')
+                                ->get();
+        return ActivityResource::collection($activities);
     }
 }

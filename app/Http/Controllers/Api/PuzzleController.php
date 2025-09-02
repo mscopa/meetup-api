@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Puzzle;
 use Illuminate\Http\Request;
-use App\Enums\UserRole;
+use App\Http\Resources\PuzzleResource;
+
 
 class PuzzleController extends Controller
 {
@@ -14,25 +15,14 @@ class PuzzleController extends Controller
      */
     public function index(Request $request)
     {
-        //
         $user = $request->user();
-        // Solo los participantes pueden ver la lista de puzzles para jugar.
-        if ($user->role !== UserRole::Participante) {
-            // Devolvemos una lista vacía o un mensaje de error.
-            return response()->json(['message' => 'Solo los participantes pueden acceder a los puzzles.'], 403);
-        }
 
-        // Obtenemos la compañía del participante.
-        $company = $user->company;
-        if (!$company) {
-            return response()->json(['puzzles' => []]); // No tiene compañía, no ve puzzles.
-        }
+        $puzzles = $user->puzzles()
+                        ->with(['crossword_words', 'word_search_words'])
+                        ->where('is_enabled', true)
+                        ->get();
 
-        // Obtenemos los puzzles desbloqueados para esa compañía
-        // 'puzzles' es la relación que definimos en el modelo Company
-        $unlockedPuzzles = $company->puzzles()->wherePivot('is_unlocked', true)->get();
-
-        return response()->json($unlockedPuzzles);
+        return PuzzleResource::collection($puzzles);
     }
 
     /**
@@ -46,10 +36,15 @@ class PuzzleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Puzzle $puzzle)
+    public function show(Request $request, Puzzle $puzzle)
     {
-        //
-        return response()->json($puzzle);
+        if ($request->user()->id !== $puzzle->user_id) {
+            return response()->json(['message' => 'No autorizado'], 403);
+        }
+
+        $puzzle->load(['crossword_words', 'word_search_words']);
+
+        return new PuzzleResource($puzzle);
     }
 
     /**

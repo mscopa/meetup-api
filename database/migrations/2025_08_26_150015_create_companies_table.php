@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('name');
             $table->integer('number');
             $table->string('war_cry');
             $table->integer('score')->default(0);
+            $table->integer('coins')->default(0);
+            $table->string('room')->nullable();
             $table->timestamps();
         });
     }

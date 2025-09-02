@@ -14,10 +14,10 @@ class Activity extends Model
      public function meetupSession(): BelongsTo
     {
         return $this->belongsTo(MeetupSession::class);
-    }
+    }   
 
-    public function sessionActivities(): HasMany
+    public function activityDetails(): HasMany
     {
-        return $this->hasMany(SessionActivity::class);
+        return $this->hasMany(ActivityDetail::class);
     }
 }

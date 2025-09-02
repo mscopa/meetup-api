@@ -3,46 +3,36 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
+        // 1. La validación se hace automáticamente por `LoginRequest`.
+        // Si falla, ni siquiera entra a este método.
 
-        try {
-            // 1. Validamos que nos envíen email y password
-            $request->validate([
-                'email' => 'required|email',
-                'password' => 'required',
+        // 2. Intentamos autenticar al usuario con los datos ya validados.
+        if (!Auth::attempt($request->only('username', 'password'))) {
+            // Si las credenciales no son correctas, lanzamos una excepción.
+            throw ValidationException::withMessages([
+                'username' => ['Las credenciales proporcionadas son incorrectas.'],
             ]);
-
-            // 2. Buscamos al usuario por su email
-            $user = User::where('email', $request->email)->first();
-
-            // 3. Verificamos que el usuario exista y que la contraseña sea correcta
-            if (! $user || ! Hash::check($request->password, $user->password)) {
-                throw ValidationException::withMessages([
-                    'email' => ['Las credenciales proporcionadas son incorrectas.'],
-                ]);
-            }
-
-            // 4. Si todo está bien, creamos un token y lo devolvemos
-            $token = $user->createToken('auth-token')->plainTextToken;
-
-            return response()->json([
-                'message' => '¡Login exitoso!',
-                'user' => $user,
-                'role' => $user->role,
-                'token' => $token,
-            ]);
-        } catch (\Throwable $th) {
-            return $th;
         }
+        // 3. Obtenemos el usuario autenticado.
+        $user = $request->user();
 
+        // 4. Creamos el token.
+        $token = $user->createToken('auth-token')->plainTextToken;
+
+        // 5. Devolvemos una respuesta limpia y segura usando el UserResource.
+        return response()->json([
+            'message' => '¡Login exitoso!',
+            'user' => new UserResource($user), // ¡Aquí está la magia!
+            'token' => $token,
+        ]);
     }
 }
