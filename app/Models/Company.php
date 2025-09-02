@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,6 +12,7 @@ class Company extends Model
     use hasFactory;
     //
     protected $fillable = [
+        'user_id',
         'name',
         'number',
         'war_cry',
@@ -33,10 +33,8 @@ class Company extends Model
     {
         return $this->hasMany(Counselor::class);
     }
-    public function puzzles() : BelongsToMany
+    public function earnings(): HasMany
     {
-        return $this->belongsToMany(Puzzle::class, 'company_puzzles')
-                    ->withPivot('is_unlocked')
-                    ->withTimestamps();
+        return $this->hasMany(Earning::class);
     }
 }

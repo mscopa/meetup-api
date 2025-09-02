@@ -16,11 +16,11 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'meetup_session_id' => $this->meetup_session_id,
             'username' => $this->username,
-            'company' => new CompanyResource($this->whenLoaded('company')),
-            'administrator' => new AdministratorResource($this->whenLoaded('administrator')),
+            'administrators' => AdministratorResource::collection('administrators'),
+            'companies' => PuzzleResource::collection('companies'),
             'puzzles' => PuzzleResource::collection('puzzles'),
+            'meetupSession' => new MeetupSessionResource($this->whenLoaded('meetupSession')),
         ];
     }
 }

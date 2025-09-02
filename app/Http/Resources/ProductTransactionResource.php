@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ActivityDetailResource extends JsonResource
+class ProductTransactionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,10 @@ class ActivityDetailResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'detail_type' => $this->detail_type,
-            'activityDetailContents' => ActivityDetailContentResource::collection($this->whenLoaded('activityDetailContents')),
-            'activity' => new ActivityResource($this->whenLoaded('activity')),
+            'quantity' => $this->quantity,
+            'total_price' => $this->total_price,
+            'product' => new ProductResource($this->whenLoaded('product')),
+            'counselor' => new CounselorResource($this->whenLoaded('counselor')),
         ];
     }
 }

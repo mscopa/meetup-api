@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MeetupSessionResource extends JsonResource
+class ProductResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,10 +17,11 @@ class MeetupSessionResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'location' => $this->location,
-            'users' => UserResource::collection($this->whenLoaded('users')),
-            'activities' => ActivityResource::collection($this->whenLoaded('activities')),
-            'products' => ProductResource::collection($this->whenLoaded('products')),
+            'description' => $this->description,
+            'price' => $this->price,
+            'stock' => $this->stock,
+            'meetup_session' => new MeetupSessionResource($this->whenLoaded('meetup_session')),
+            'product_transactions' => ProductTransactionResource::collection($this->whenLoaded('product_transactions')),
         ];
     }
 }

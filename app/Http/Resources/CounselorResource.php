@@ -19,6 +19,7 @@ class CounselorResource extends JsonResource
             'first_name' => $this->first_name,
             'middle_name' => $this->middle_name,
             'last_name' => $this->last_name,
+            'pin' => $this->pin,
             'type' => $this->type,
             'gender' => $this->gender,
             'dietary_restrictions' => $this->dietary_restrictions,
@@ -27,6 +28,8 @@ class CounselorResource extends JsonResource
             'attended' => $this->attended,
             'is_member' => $this->is_member,
             'checkin' => $this->checkin,
+            'product_transactions' => ProductTransactionResource::collection($this->whenLoaded('product_transactions')),
+            'company' => new CompanyResource($this->whenLoaded('company')),
         ];
     }
 }

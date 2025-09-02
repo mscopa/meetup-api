@@ -11,9 +11,16 @@ class Participant extends Model
     use hasFactory;
     //
     protected $fillable = [
-        'user_id',
         'company_id',
-        'coins',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'gender',
+        'dietary_restrictions',
+        'medical_conditions',
+        'tshirt_size',
+        'approval_status',
+        'attended',
         'is_member',
         'kit_delivered',
     ];

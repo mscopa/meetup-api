@@ -5,22 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Earning extends Model
+class Announcement extends Model
 {
     //
     protected $fillable = [
         'administrator_id',
-        'company_id',
-        'reason',
-        'coin_amount',
-        'score_amount',
+        'title',
+        'message',
+        'created_at',
     ];
+
     public function administrator() : BelongsTo
     {
         return $this->belongsTo(Administrator::class);
-    }
-    public function company() : BelongsTo
-    {
-        return $this->belongsTo(Company::class);
     }
 }

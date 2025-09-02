@@ -8,6 +8,7 @@ class CrosswordWord extends Model
 {
     //
     protected $fillable = [
+        'puzzle_id',
         'word',
         'normalized_word',
         'clue',

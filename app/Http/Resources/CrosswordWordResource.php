@@ -23,6 +23,7 @@ class CrosswordWordResource extends JsonResource
             'direction' => $this->direction,
             'row' => $this->row,
             'col' => $this->col,
+            'puzzle' => new PuzzleResource($this->whenLoaded('puzzle')),
         ];
     }
 }

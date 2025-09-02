@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ActivityDetailContentResource extends JsonResource
+class AnnouncementResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,10 +15,11 @@ class ActivityDetailContentResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "id" => $this->id,
-            'detail_content' => $this->detail_content,
-            'display_order' => $this->display_order,
-            'activityDetail' => new ActivityDetailResource($this->whenLoaded('activityDetail')),
+            'id' => $this->id,
+            'title' => $this->title,
+            'message' => $this->message,
+            'created_at' => $this->created_at,
+            'administrator' => new AdministratorResource($this->whenLoaded('administrator')),
         ];
     }
 }

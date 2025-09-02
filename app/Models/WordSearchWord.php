@@ -9,6 +9,7 @@ class WordSearchWord extends Model
 {
     //
     protected $fillable = [
+        'puzzle_id',
         'word',
     ];
 

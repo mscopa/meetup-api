@@ -22,6 +22,7 @@ class PuzzleResource extends JsonResource
             'is_enabled' => $this->is_enabled,
             'crossword_words' => CrosswordWordResource::collection($this->whenLoaded('crossword_words')),
             'word_search_words' => WordSearchWordResource::collection($this->whenLoaded('word_search_words')),
+            'user' => new UserResource($this->whenLoaded('user')),
         ];
     }
 }

@@ -23,6 +23,8 @@ class CompanyResource extends JsonResource
             'room' => $this->room,
             'participants' => ParticipantResource::collection($this->whenLoaded('participants')),
             'counselors' => CounselorResource::collection($this->whenLoaded('counselors')),
+            'earnings' => EarningResource::collection($this->whenLoaded('earnings')),
+            'user' => new UserResource($this->whenLoaded('user')),
         ];
     }
 }

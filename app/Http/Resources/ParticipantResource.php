@@ -26,6 +26,7 @@ class ParticipantResource extends JsonResource
             'attended' => $this->attended,
             'is_member' => $this->is_member,
             'kit_delivered' => $this->kit_delivered,
+            'company' => new CompanyResource($this->whenLoaded('company')),
         ];
     }
 }

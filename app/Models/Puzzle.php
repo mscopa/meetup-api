@@ -13,6 +13,7 @@ class Puzzle extends Model
     use hasFactory;
     //
     protected $fillable = [
+        'user_id',
         'title',
         'description',
         'type',

@@ -23,6 +23,7 @@ class ActivityResource extends JsonResource
             'end_date' => $this->end_date,
             'modality' => $this->modality,
             'activityDetails' => ActivityDetailResource::collection($this->whenLoaded('activityDetails')),
+            'meetupSession' => new MeetupSessionResource($this->whenLoaded('meetupSession')),
         ];
     }
 }

@@ -18,6 +18,7 @@ class WordSearchWordResource extends JsonResource
             'id' => $this->id,
             'puzzle_id' => $this->puzzle_id,
             'word' => $this->word,
+            'puzzle' => new PuzzleResource($this->whenLoaded('puzzle')),
         ];
     }
 }
