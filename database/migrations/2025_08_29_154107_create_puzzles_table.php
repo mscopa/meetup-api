@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('type');
-            $table->boolean(false);
+            $table->boolean('is_enabled')->default(true);
             $table->timestamps();
         });
     }

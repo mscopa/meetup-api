@@ -14,6 +14,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             MeetupSessionSeeder::class,
+            UserSeeder::class,
+            AdministratorSeeder::class,
+            CompanySeeder::class,
+            ParticipantSeeder::class,
+            CounselorSeeder::class,
+            ActivitySeeder::class,
+            ActivityDetailSeeder::class,
+            ActivityDetailContentSeeder::class,
         ]);
     }
 }
