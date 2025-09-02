@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('pin');
             $table->string('type'); // Ex: Consejero, Auxiliar;
             $table->string('gender')->nullable();
-            $table->string('dietary_conditions')->nullable();
+            $table->string('dietary_restrictions')->nullable();
             $table->string('medical_conditions')->nullable();
             $table->string('tshirt_size')->nullable();
             $table->string('approval_status')->nullable(); // Ex: Pendiente, Rechazado, Aprobado

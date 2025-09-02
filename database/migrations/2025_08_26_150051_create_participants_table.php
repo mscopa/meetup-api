@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->string('gender')->nullable();
-            $table->string('dietary_conditions')->nullable();
+            $table->string('dietary_restrictions')->nullable();
             $table->string('medical_conditions')->nullable();
             $table->string('tshirt_size')->nullable();
             $table->string('approval_status')->nullable();
