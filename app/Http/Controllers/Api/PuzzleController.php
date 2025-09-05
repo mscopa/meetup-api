@@ -18,13 +18,21 @@ class PuzzleController extends Controller
      */
     public function index(Request $request)
     {
-        $user = Auth::user();
+        $user = $request->user();
 
-        $puzzles = Puzzle::where('user_id', $user->id)
-                         ->where('is_enabled', true)
-                         ->get();
+        // Construimos la consulta base para los puzzles del usuario.
+        $query = Puzzle::where('user_id', $user->id);
 
-        // Devolvemos la lista usando un Resource para formatear los datos.
+        // Verificamos si el token del usuario tiene la habilidad de 'toggle-puzzles'.
+        // Esta habilidad se la dimos al consejero cuando se identificó.
+        if (!$user->tokenCan('toggle-puzzles')) {
+            // Si NO es un consejero, filtramos y mostramos solo los activados.
+            $query->where('is_enabled', true);
+        }
+        
+        // Para los consejeros, la condición 'where' no se aplica, por lo que verán todos.
+        $puzzles = $query->get();
+
         return PuzzleResource::collection($puzzles);
     }
 
