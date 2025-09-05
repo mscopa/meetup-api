@@ -9,12 +9,25 @@ use Illuminate\Auth\Access\Response;
 
 class CompanyPolicy
 {
+    public function before(User $user, string $ability): ?bool
+    {
+        // Si el usuario logueado es un administrador, le damos permiso para todo y no seguimos revisando.
+        if ($user->administrator) {
+            return true;
+        }
+
+        // Si no es un administrador, devolvemos null para que se ejecuten las otras reglas.
+        return null;
+    }
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        return in_array($user->role, [UserRole::Administrador, UserRole::MatrimonioDirector]);
+        // Un administrador puede ver la lista de todas las compañías.
+        // Un usuario normal (compañía) no puede.
+        // La regla 'before' ya se encarga de esto, pero es bueno ser explícito.
+        return $user->administrator !== null;
     }
 
     /**
@@ -22,12 +35,7 @@ class CompanyPolicy
      */
     public function view(User $user, Company $company): bool
     {
-        if ($user->role === UserRole::Consejero) {
-            // Un consejero solo puede ver su propia compañía.
-            return $user->company_id === $company->id;
-        }
-        // Los otros roles de admin sí pueden ver cualquiera.
-        return in_array($user->role, [UserRole::Administrador, UserRole::MatrimonioDirector]);
+        return $user->id === $company->user_id;
     }
 
     /**

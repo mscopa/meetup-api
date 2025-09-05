@@ -57,11 +57,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(MeetupSession::class);
     }
-    protected function administrator(): HasOne
+    public function administrator(): HasOne
     {
         return $this->hasOne(Administrator::class);
     }
-    protected function company(): HasOne
+    public function company(): HasOne
     {
         return $this->hasOne(Company::class);
     }

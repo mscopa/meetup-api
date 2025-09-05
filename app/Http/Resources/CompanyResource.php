@@ -19,6 +19,7 @@ class CompanyResource extends JsonResource
             'name' => $this->name,
             'number' => $this->number,
             'war_cry' => $this->war_cry,
+            'score' => $this->score,
             'coins' => $this->coins,
             'room' => $this->room,
             'participants' => ParticipantResource::collection($this->whenLoaded('participants')),

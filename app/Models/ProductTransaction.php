@@ -13,6 +13,8 @@ class ProductTransaction extends Model
         'counselor_id',
         'quantity',
         'total_price',
+        'retrieval_code',
+        'status',
     ];
 
     public function product() : BelongsTo

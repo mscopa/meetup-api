@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('counselor_id')->constrained('counselors');
             $table->integer('quantity')->unsigned();
             $table->integer('total_price');
+            $table->string('retrieval_code')->unique();
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

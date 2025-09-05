@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('meetup_session_id')->constrained('meetup_sessions');
             $table->string('title'); // Ex: Tuberías y Monedas
             $table->string('type'); // Ex: Juego, Devocional, Seminario, etc.
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->string('modality')->nullable(); // Ex: 2, 4, 12 compañías
             $table->timestamps();
         });

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Puzzle;
-use Illuminate\Http\Request;
+use App\Http\Requests\TogglePuzzleStatusRequest;
 use App\Http\Resources\PuzzleResource;
-
+use App\Models\Puzzle;
+use App\Services\PuzzleBuilders\CrosswordBuilder;
+use App\Services\PuzzleBuilders\WordSearchBuilder;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PuzzleController extends Controller
 {
@@ -15,13 +18,13 @@ class PuzzleController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
+        $user = Auth::user();
 
-        $puzzles = $user->puzzles()
-                        ->with(['crossword_words', 'word_search_words'])
-                        ->where('is_enabled', true)
-                        ->get();
+        $puzzles = Puzzle::where('user_id', $user->id)
+                         ->where('is_enabled', true)
+                         ->get();
 
+        // Devolvemos la lista usando un Resource para formatear los datos.
         return PuzzleResource::collection($puzzles);
     }
 
@@ -38,13 +41,16 @@ class PuzzleController extends Controller
      */
     public function show(Request $request, Puzzle $puzzle)
     {
-        if ($request->user()->id !== $puzzle->user_id) {
-            return response()->json(['message' => 'No autorizado'], 403);
+        if (!$puzzle->is_enabled) {
+            abort(403, 'Este puzzle no está activado.');
         }
-
-        $puzzle->load(['crossword_words', 'word_search_words']);
-
-        return new PuzzleResource($puzzle);
+        $builder = match ($puzzle->type) {
+            'Crucigrama'     => new CrosswordBuilder(),
+            'Sopa de Letras' => new WordSearchBuilder(),
+            default          => abort(501, 'Tipo de puzzle no soportado.')
+        };
+        $puzzleData = $builder->build($puzzle);
+        return response()->json($puzzleData);
     }
 
     /**
@@ -61,5 +67,15 @@ class PuzzleController extends Controller
     public function destroy(Puzzle $puzzle)
     {
         //
+    }
+    public function toggleStatus(TogglePuzzleStatusRequest $request, Puzzle $puzzle)
+    {
+
+        $validated = $request->validated();
+
+        $puzzle->update([
+            'is_enabled' => $validated['is_enabled'],
+        ]);
+        return new PuzzleResource($puzzle);
     }
 }

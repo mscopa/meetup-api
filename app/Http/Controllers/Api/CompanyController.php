@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,12 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        // Esta línea llamaría al método `viewAny` de tu policy.
+        $this->authorize('viewAny', Company::class);
+
+        // Si tiene permiso, muestra todas las compañías.
+        $companies = Company::all();
+        return CompanyResource::collection($companies);
     }
 
     /**
@@ -31,7 +37,8 @@ class CompanyController extends Controller
     {
         //
         $this->authorize('view', $company);
-        return $company;
+        $company->load(['participants', 'counselors']);
+        return new CompanyResource($company); 
     }
 
     /**

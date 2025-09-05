@@ -22,9 +22,11 @@ class CounselorAuthController extends Controller
             ]);
         }
 
-        $user->tokens()->delete();
+        $request->user()->currentAccessToken()->delete();
         $token = $user->createToken('counselor-token', [
             'purchase-products',
+            'toggle-puzzles',
+            'view-history',
             'counselor-id:' . $counselor->id
         ])->plainTextToken;
 

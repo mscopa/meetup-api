@@ -24,7 +24,7 @@ class ProductController extends Controller
         $user = $request->user();
 
         // 3. Filtramos los productos para mostrar solo los de su sesión.
-        $products = Product::where('meetup_session_id', $user->meetup_session_id)->paginate(15);
+        $products = Product::where('meetup_session_id', $user->meetup_session_id)->paginate();
 
         // 4. Devolvemos la lista de productos usando el Resource.
         return ProductResource::collection($products);

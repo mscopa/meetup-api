@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('puzzle_id')->constrained('puzzles');
             $table->string('word');
+            $table->integer('start_row')->unsigned();
+            $table->integer('start_col')->unsigned();
+            $table->integer('end_row')->unsigned();
+            $table->integer('end_col')->unsigned();
+            
             $table->timestamps();
         });
     }

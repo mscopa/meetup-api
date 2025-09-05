@@ -10,6 +10,7 @@ use App\Models\ProductTransaction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
 
 class ProductPurchaseController extends Controller
 {
@@ -41,9 +42,9 @@ class ProductPurchaseController extends Controller
         $counselor = Counselor::findOrFail($counselorId);
         $company = $counselor->company; // A través del consejero, llegamos a su compañía
         $items = $request->validated()['items'];
-
+        $purchaseCodes = [];
         try {
-            DB::transaction(function () use ($items, $company, $counselor) {
+            DB::transaction(function () use ($items, $company, $counselor, &$purchaseCodes) {
                 $totalCost = 0;
                 $productsToUpdate = [];
 
@@ -70,12 +71,17 @@ class ProductPurchaseController extends Controller
                 foreach ($productsToUpdate as $data) {
                     $product = $data['product'];
                     $quantity = $data['quantity'];
+                    // 1. GENERAMOS EL CÓDIGO Y LO GUARDAMOS EN UNA VARIABLE
+                    $newCode = $this->generateUniqueCode();
+                    $purchaseCodes[] = $newCode; // Lo añadimos a nuestro array
                     $product->decrement('stock', $quantity);
                     ProductTransaction::create([
                         'product_id' => $product->id,
                         'counselor_id' => $counselor->id,
                         'quantity' => $quantity,
                         'total_price' => $product->price * $quantity,
+                        'retrieval_code' => $newCode, // 2. USAMOS LA VARIABLE PARA GUARDAR
+                        'status' => 'pending',
                     ]);
                 }
             });
@@ -83,6 +89,17 @@ class ProductPurchaseController extends Controller
             return response()->json(['message' => 'Error de validación', 'errors' => $e->errors()], 422);
         }
 
-        return response()->json(['message' => '¡Compra realizada con éxito!'], 200);
+        return response()->json([
+            'message' => '¡Compra realizada con éxito!',
+            'retrieval_code' => $purchaseCodes[0] ?? null 
+        ], 200);
+    }
+    private function generateUniqueCode(): string
+    {
+        do {
+            $code = strtoupper(Str::random(6));
+        } while (ProductTransaction::where('retrieval_code', $code)->exists());
+        
+        return $code;
     }
 }

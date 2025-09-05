@@ -18,6 +18,7 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
+            'image_url' => '/assets/images/mario-block.png',
             'price' => $this->price,
             'stock' => $this->stock,
             'meetup_session' => new MeetupSessionResource($this->whenLoaded('meetup_session')),

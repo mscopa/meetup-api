@@ -7,7 +7,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://super-meetup-2025.netlify.app', 'http://localhost:5173', 'http://localhost:4173',],
+    'allowed_origins' => ['https://super-meetup-2025.netlify.app', 'http://localhost:5173', 'http://localhost:4173', 'http://127.0.0.1:5500'],
 
     'allowed_origins_patterns' => [],
 

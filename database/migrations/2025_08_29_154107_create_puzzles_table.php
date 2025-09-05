@@ -16,7 +16,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('type');
+            $table->string('type'); // "Crucigrama", "Sopa de Letras", etc.
+            $table->integer('rows')->unsigned();
+            $table->integer('cols')->unsigned();
+            $table->json('grid_data')->nullable()->default(null);
             $table->boolean('is_enabled')->default(true);
             $table->timestamps();
         });

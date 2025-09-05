@@ -15,12 +15,20 @@ class UserResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'username' => $this->username,
-            'administrators' => AdministratorResource::collection('administrators'),
-            'companies' => PuzzleResource::collection('companies'),
-            'puzzles' => PuzzleResource::collection('puzzles'),
-            'meetupSession' => new MeetupSessionResource($this->whenLoaded('meetupSession')),
-        ];
+        'id' => $this->id,
+        'username' => $this->username,
+
+        'administrator' => $this->when(
+            $this->administrator !== null,
+            new AdministratorResource($this->whenLoaded('administrator'))
+        ),
+
+        $this->mergeWhen($this->company !== null, [
+            'company' => new CompanyResource($this->whenLoaded('company')),
+        ]),
+        
+        'puzzles' => PuzzleResource::collection($this->whenLoaded('puzzles')),
+        'meetupSession' => new MeetupSessionResource($this->whenLoaded('meetupSession')),
+    ];
     }
 }

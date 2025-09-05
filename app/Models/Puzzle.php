@@ -17,18 +17,33 @@ class Puzzle extends Model
         'title',
         'description',
         'type',
+        'rows',
+        'cols',
+        'grid_data',
         'is_enabled'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_enabled' => 'boolean',
+        'grid_data'  => 'array', 
+        'rows'       => 'integer', 
+        'cols'       => 'integer',
     ];
     
     public function user() : BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-    public function crossword_words(): HasMany
+    public function crosswordWords(): HasMany
     {
         return $this->hasMany(CrosswordWord::class);
     }
-    public function word_search_words(): HasMany
+    public function wordSearchWords(): HasMany
     {
         return $this->hasMany(WordSearchWord::class);
     }

@@ -876,5 +876,6 @@ class ActivityDetailContentSeeder extends Seeder
                 'display_order' => 8,
             ],
         ];
+        DB::table('activity_detail_contents')->insert($activityDetailContents);
     }
 }

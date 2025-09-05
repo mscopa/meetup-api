@@ -2,16 +2,17 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Announcement;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductPurchaseRequest extends FormRequest
+class StoreAnnouncementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return $this->user() && $this->user()->tokenCan('purchase-products');
+        return $this->user()->can('create', Announcement::class);
     }
 
     /**
@@ -21,10 +22,10 @@ class ProductPurchaseRequest extends FormRequest
      */
     public function rules(): array
     {
+        // 2. Movemos las reglas de validación aquí.
         return [
-            'items' => ['required', 'array', 'min:1'],
-            'items.*.product_id' => ['required', 'integer', 'exists:products,id'],
-            'items.*.quantity' => ['required', 'integer', 'min:1'],
+            'title' => 'required|string|max:255',
+            'message' => 'required|string',
         ];
     }
 }

@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             MeetupSessionSeeder::class,
+            ProductSeeder::class,
             UserSeeder::class,
             AdministratorSeeder::class,
             CompanySeeder::class,
@@ -22,6 +23,9 @@ class DatabaseSeeder extends Seeder
             ActivitySeeder::class,
             ActivityDetailSeeder::class,
             ActivityDetailContentSeeder::class,
+            PuzzleSeeder::class,
+            CrosswordWordSeeder::class,
+            WordSearchWordSeeder::class,
         ]);
     }
 }
