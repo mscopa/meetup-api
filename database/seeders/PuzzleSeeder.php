@@ -24,7 +24,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 1,
@@ -34,7 +34,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 1,
@@ -44,7 +44,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 1,
@@ -75,7 +75,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 1,
@@ -106,7 +106,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 1,
@@ -136,7 +136,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 2,
@@ -146,7 +146,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 2,
@@ -156,7 +156,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 2,
@@ -166,7 +166,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 2,
@@ -197,7 +197,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 2,
@@ -228,7 +228,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 2,
@@ -258,7 +258,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 3,
@@ -268,7 +268,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 3,
@@ -278,7 +278,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 3,
@@ -288,7 +288,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 3,
@@ -319,7 +319,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 3,
@@ -350,7 +350,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 3,
@@ -380,7 +380,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 4,
@@ -390,7 +390,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 4,
@@ -400,7 +400,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 4,
@@ -410,7 +410,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 4,
@@ -441,7 +441,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 4,
@@ -472,7 +472,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 4,
@@ -502,7 +502,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 5,
@@ -512,7 +512,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 5,
@@ -522,7 +522,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 5,
@@ -532,7 +532,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 5,
@@ -563,7 +563,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 5,
@@ -594,7 +594,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 5,
@@ -624,7 +624,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 6,
@@ -634,7 +634,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 6,
@@ -644,7 +644,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 6,
@@ -654,7 +654,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 6,
@@ -685,7 +685,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 6,
@@ -716,7 +716,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 6,
@@ -746,7 +746,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 7,
@@ -756,7 +756,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 7,
@@ -766,7 +766,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 7,
@@ -776,7 +776,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 7,
@@ -807,7 +807,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 7,
@@ -838,7 +838,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 7,
@@ -868,7 +868,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 8,
@@ -878,7 +878,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 8,
@@ -888,7 +888,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 8,
@@ -898,7 +898,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 8,
@@ -929,7 +929,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 8,
@@ -960,7 +960,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 8,
@@ -990,7 +990,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 9,
@@ -1000,7 +1000,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 9,
@@ -1010,7 +1010,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 9,
@@ -1020,7 +1020,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 9,
@@ -1051,7 +1051,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 9,
@@ -1082,7 +1082,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 9,
@@ -1112,7 +1112,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 10,
@@ -1122,7 +1122,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 10,
@@ -1132,7 +1132,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 10,
@@ -1142,7 +1142,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 10,
@@ -1173,7 +1173,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 10,
@@ -1204,7 +1204,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 10,
@@ -1234,7 +1234,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 11,
@@ -1244,7 +1244,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 11,
@@ -1254,7 +1254,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 11,
@@ -1264,7 +1264,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 11,
@@ -1295,7 +1295,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 11,
@@ -1326,7 +1326,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 11,
@@ -1356,7 +1356,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 12,
@@ -1366,7 +1366,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 20,
                 'cols' => 17,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 12,
@@ -1376,7 +1376,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 13,
                 'cols' => 18,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 12,
@@ -1386,7 +1386,7 @@ class PuzzleSeeder extends Seeder
                 'rows' => 19,
                 'cols' => 19,
                 'grid_data' => null,
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 12,
@@ -1417,7 +1417,7 @@ class PuzzleSeeder extends Seeder
                     ['H', 'C', 'N', 'E', 'L', 'K', 'P', 'R', 'O', 'B', 'E', 'D', 'I', 'E', 'N', 'C', 'I', 'A', 'O', 'A'],
                     ['U', 'I', 'K', 'E', 'M', 'I', 'S', 'E', 'R', 'I', 'C', 'O', 'R', 'D', 'I', 'A', 'A', 'C', 'B', 'S']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 12,
@@ -1448,7 +1448,7 @@ class PuzzleSeeder extends Seeder
                     ['M', 'I', 'O', 'L', 'T', 'A', 'R', 'E', 'E', 'O', 'V', 'L', 'A', 'M', 'U', 'G', 'I', 'E', 'Y', 'H'],
                     ['A', 'F', 'T', 'D', 'I', 'S', 'C', 'I', 'P', 'U', 'L', 'O', 'O', 'M', 'N', 'R', 'E', 'X', 'A', 'I']
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
             [
                 'user_id' => 12,
@@ -1478,7 +1478,7 @@ class PuzzleSeeder extends Seeder
                     ['C', 'C', 'O', 'D', 'N', 'R', 'T', 'L', 'E', 'L', 'B', 'O', 'N', 'Y', 'I', 'M', 'N', 'E', 'S', 'C'],
                     ['A', 'R', 'Y', 'A', 'N', 'S', 'T', 'M', 'O', 'A', 'I', 'A', 'S', 'X', 'M', 'O', 'N', 'E', 'D', 'U'],
                 ],
-                'is_enabled' => true,
+                'is_enabled' => false,
             ],
         ];
 

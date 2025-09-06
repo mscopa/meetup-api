@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAnnouncementRequest;
 use App\Http\Resources\AnnouncementResource;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
@@ -28,14 +29,13 @@ class AnnouncementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAnnouncementRequest $request)
     {
         $validated = $request->validated();
 
         $announcement = $request->user()->administrator->announcements()->create([
             'title' => $validated['title'],
             'message' => $validated['message'],
-            'meetup_session_id' => $request->user()->meetup_session_id,
         ]);
 
         return new AnnouncementResource($announcement);

@@ -188,15 +188,15 @@ class ActivityDetailSeeder extends Seeder
                 'detail_type' => 'Reglas y Sugerencias',
             ],
             [
-                'activity_id' => 12,
+                'activity_id' => 11,
                 'detail_type' => 'Objetivo',
             ],
             [
-                'activity_id' => 12,
+                'activity_id' => 11,
                 'detail_type' => 'Materiales Necesarios',
             ],
             [
-                'activity_id' => 12,
+                'activity_id' => 11,
                 'detail_type' => 'Instrucciones',
             ],
             [

@@ -11,10 +11,13 @@ class TransactionRetrievalController extends Controller
     /**
      * Verifica un código de retiro y devuelve los detalles de la transacción.
      */
-    public function verify(string $code)
+    public function verify(Request $request, string $code)
     {
-        // Esto debería estar protegido para que solo el encargado pueda hacerlo
-        // $this->authorize('...'); 
+        // AHORA SÍ AUTORIZAMOS: Verificamos que el token tenga la habilidad.
+        if (!$request->user()->tokenCan('manage-store')) {
+            abort(403, 'No autorizado.');
+        }
+
 
         $transaction = ProductTransaction::with('product', 'counselor.company')
             ->where('retrieval_code', strtoupper($code))
@@ -30,10 +33,12 @@ class TransactionRetrievalController extends Controller
     /**
      * Marca una transacción como "retirada".
      */
-    public function redeem(string $code)
+    public function redeem(Request $request, string $code)
     {
-        // Esto también debería estar protegido
-        // $this->authorize('...');
+        // AHORA SÍ AUTORIZAMOS:
+        if (!$request->user()->tokenCan('manage-store')) {
+            abort(403, 'No autorizado.');
+        }
 
         $transaction = ProductTransaction::where('retrieval_code', strtoupper($code))->firstOrFail();
 

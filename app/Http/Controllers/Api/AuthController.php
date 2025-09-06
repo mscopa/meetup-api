@@ -11,51 +11,86 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    // Usamos tu LoginRequest, que es la mejor práctica.
     public function login(LoginRequest $request)
     {
-        // 1. La validación se hace automáticamente por `LoginRequest`.
-        // Si falla, ni siquiera entra a este método.
-
-        // 2. Intentamos autenticar al usuario con los datos ya validados.
+        // 1. La validación ya la hizo LoginRequest, perfecto.
+        // 2. Intentamos autenticar.
         if (!Auth::attempt($request->only('username', 'password'))) {
-            // Si las credenciales no son correctas, lanzamos una excepción.
             throw ValidationException::withMessages([
                 'username' => ['Las credenciales proporcionadas son incorrectas.'],
             ]);
         }
-        // 3. Obtenemos el usuario autenticado.
-        $user = $request->user()->load(['administrator', 'company', 'meetupSession']);;
 
-        // 4. Creamos el token.
-        $token = $user->createToken('auth-token', [
-            'view-schedule',
-            'view-puzzles',
-            'view-company-details',
-            'view-store'
-        ])->plainTextToken;
+        // 3. Obtenemos el usuario autenticado (tu código ya hacía esto perfecto).
+        $user = $request->user();
+        
+        // 4. --- NUEVO: LÓGICA PARA DETERMINAR LAS HABILIDADES ---
+        $abilities = []; // Definimos el array de habilidades
+        if ($user->administrator) {
+            // Si es admin, construimos su lista de habilidades basadas en su ROL
+            $role = $user->administrator->role;
+            if ($role === 'Matrimonio Director') {
+                $abilities = [ 'perform-check-in', 'create-announcement', 'assign-points', 'manage-store' ];
+            } elseif ($role === 'Facilitador') {
+                $abilities = ['create-announcement', 'assign-points'];
+            } elseif ($role === 'Checkin') {
+                $abilities = ['perform-check-in'];
+            } elseif ($role === 'Caja') {
+                $abilities = ['manage-store'];
+            }
+        } else {
+            // Si no es admin, es una compañía con permisos limitados
+            $abilities = [ 'view-schedule', 'view-puzzles', 'view-company-details', 'view-store' ];
+        }
+        // --- FIN DE LA LÓGICA NUEVA ---
 
-        // 5. Devolvemos una respuesta limpia y segura usando el UserResource.
+        // 5. Creamos el token CON las habilidades correctas
+        $user->tokens()->delete(); // Borramos tokens viejos para mantenerlo limpio
+        $token = $user->createToken('auth-token', $abilities)->plainTextToken;
+
+        // 6. Devolvemos una respuesta limpia usando tu UserResource.
         return response()->json([
             'message' => '¡Login exitoso!',
-            'user' => new UserResource($user), // ¡Aquí está la magia!
+            'user' => new UserResource($user->load(['administrator', 'company'])),
             'token' => $token,
         ]);
     }
-     public function me(Request $request): UserResource
+     public function me(Request $request)
     {
         $user = $request->user();
-        $token = $user->currentAccessToken();
 
-        // Obtenemos las habilidades del token actual. Si no hay token, un array vacío.
-        $abilities = $token ? $token->abilities : [];
+        // 1. CARGAMOS LAS RELACIONES PRIMERO (¡ESTE ES EL ARREGLO!)
+        // Ahora el objeto $user ya tiene la información de si es admin o compañía.
+        $user->load('administrator', 'company');
 
-        // Cargamos las relaciones que siempre queremos mostrar del usuario
-        $user->load(['company', 'administrator']);
+        // 2. Obtenemos los permisos basados en ROLES (para los Administradores)
+        $gateAbilities = [];
+        $allGateAbilities = [
+            'perform-check-in',
+            'create-announcement',
+            'assign-points',
+            'manage-store',
+        ];
 
-        // Devolvemos el UserResource y le agregamos la metadata con las habilidades.
-        return (new UserResource($user))->additional([
+        foreach ($allGateAbilities as $ability) {
+            // Ahora esta llamada funciona, porque $user->administrator ya está cargado.
+            if ($user->can($ability)) {
+                $gateAbilities[] = $ability;
+            }
+        }
+
+        // 3. Obtenemos los permisos directos del TOKEN (para los Consejeros)
+        $tokenAbilities = $user->currentAccessToken()->abilities;
+
+        // 4. Combinamos ambos listados y eliminamos duplicados
+        $allUserAbilities = array_unique(array_merge($gateAbilities, $tokenAbilities));
+
+        // 5. Devolvemos el usuario y su lista completa de habilidades
+        return response()->json([
+            'data' => $user, // Ya no necesita el ->load() aquí porque lo hicimos arriba
             'meta' => [
-                'abilities' => $abilities
+                'abilities' => $allUserAbilities
             ]
         ]);
     }
