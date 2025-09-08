@@ -37,29 +37,30 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/products', ProductController::class);
     Route::post('/purchase', ProductPurchaseController::class);
     Route::get('/my-transactions', TransactionHistoryController::class);
+
     Route::middleware(['ability:manage-store'])->group(function () {
         Route::get('/transactions/verify/{code}', [TransactionRetrievalController::class, 'verify']);
         Route::post('/transactions/redeem/{code}', [TransactionRetrievalController::class, 'redeem']);
     });
+
     Route::get('/ranking', [RankingController::class, 'index']);
     Route::get('/puzzles', [PuzzleController::class, 'index']);
     Route::get('/puzzles/{puzzle}', [PuzzleController::class, 'show']);
     Route::patch('/puzzles/{puzzle}/toggle-status', [PuzzleController::class, 'toggleStatus'])
+
     ->middleware('ability:toggle-puzzles');
-    // Grupo de rutas para el Check-in, protegido por el Gate.
     Route::middleware('can:perform-check-in')->group(function () {
-        // Devuelve la lista de todos los participantes para la búsqueda
         Route::get('/checkin/participants', [CheckInController::class, 'index']);
         Route::post('/checkin/participants', [CheckInController::class, 'store']);
         Route::patch('/checkin/participants/{participant}', [CheckInController::class, 'update']);
     });
-    // Ruta para que el formulario obtenga la lista de compañías
+
     Route::get('/company-list', [CompanyController::class, 'list']); 
-    
-    // Grupo de rutas para Asignar Puntos, protegido por el Gate que ya creamos
+
     Route::middleware('can:assign-points')->group(function () {
         Route::get('/earnings', [EarningController::class, 'index']);
         Route::post('/earnings', [EarningController::class, 'store']);
     });
+    
     Route::post('/logout', [AuthController::class, 'logout']);
 });

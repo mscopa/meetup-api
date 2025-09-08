@@ -19,8 +19,6 @@ class ParticipantFactory extends Factory
     public function definition(): array
     {
         return [
-            // Las claves foráneas (user_id y company_id) se asignarán en el Seeder
-            // para asegurar que correspondan a entidades existentes en la base de datos.
             'user_id' => User::factory(),
             'company_id' => Company::factory(),
             'coins' => fake()->numberBetween(0, 100),

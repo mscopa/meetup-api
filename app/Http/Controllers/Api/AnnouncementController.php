@@ -17,7 +17,6 @@ class AnnouncementController extends Controller
     {
         $this->authorize('viewAny', Announcement::class);
 
-        // Usamos nuestro nuevo y elegante scope. ¡Mucho más legible!
         $announcements = Announcement::forSession($request->user()->meetup_session_id)
             ->with('administrator.user')
             ->latest()

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ActivityDetailContent extends Model
 {
     //
-    protected $guarded = []; // Permite asignación masiva
+    protected $guarded = [];
     
     public function activityDetail() : BelongsTo
     {

@@ -11,24 +11,18 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    // Usamos tu LoginRequest, que es la mejor práctica.
     public function login(LoginRequest $request)
     {
-        // 1. La validación ya la hizo LoginRequest, perfecto.
-        // 2. Intentamos autenticar.
         if (!Auth::attempt($request->only('username', 'password'))) {
             throw ValidationException::withMessages([
                 'username' => ['Las credenciales proporcionadas son incorrectas.'],
             ]);
         }
 
-        // 3. Obtenemos el usuario autenticado (tu código ya hacía esto perfecto).
         $user = $request->user();
         
-        // 4. --- NUEVO: LÓGICA PARA DETERMINAR LAS HABILIDADES ---
-        $abilities = []; // Definimos el array de habilidades
+        $abilities = []; 
         if ($user->administrator) {
-            // Si es admin, construimos su lista de habilidades basadas en su ROL
             $role = $user->administrator->role;
             if ($role === 'Matrimonio Director') {
                 $abilities = [ 'perform-check-in', 'create-announcement', 'assign-points', 'manage-store' ];
@@ -40,16 +34,12 @@ class AuthController extends Controller
                 $abilities = ['manage-store'];
             }
         } else {
-            // Si no es admin, es una compañía con permisos limitados
             $abilities = [ 'view-schedule', 'view-puzzles', 'view-company-details', 'view-store' ];
         }
-        // --- FIN DE LA LÓGICA NUEVA ---
 
-        // 5. Creamos el token CON las habilidades correctas
-        $user->tokens()->delete(); // Borramos tokens viejos para mantenerlo limpio
+        $user->tokens()->delete(); 
         $token = $user->createToken('auth-token', $abilities)->plainTextToken;
 
-        // 6. Devolvemos una respuesta limpia usando tu UserResource.
         return response()->json([
             'message' => '¡Login exitoso!',
             'user' => new UserResource($user->load(['administrator', 'company'])),
@@ -60,11 +50,8 @@ class AuthController extends Controller
     {
         $user = $request->user();
 
-        // 1. CARGAMOS LAS RELACIONES PRIMERO (¡ESTE ES EL ARREGLO!)
-        // Ahora el objeto $user ya tiene la información de si es admin o compañía.
         $user->load('administrator', 'company');
 
-        // 2. Obtenemos los permisos basados en ROLES (para los Administradores)
         $gateAbilities = [];
         $allGateAbilities = [
             'perform-check-in',
@@ -74,21 +61,17 @@ class AuthController extends Controller
         ];
 
         foreach ($allGateAbilities as $ability) {
-            // Ahora esta llamada funciona, porque $user->administrator ya está cargado.
             if ($user->can($ability)) {
                 $gateAbilities[] = $ability;
             }
         }
 
-        // 3. Obtenemos los permisos directos del TOKEN (para los Consejeros)
         $tokenAbilities = $user->currentAccessToken()->abilities;
 
-        // 4. Combinamos ambos listados y eliminamos duplicados
         $allUserAbilities = array_unique(array_merge($gateAbilities, $tokenAbilities));
 
-        // 5. Devolvemos el usuario y su lista completa de habilidades
         return response()->json([
-            'data' => $user, // Ya no necesita el ->load() aquí porque lo hicimos arriba
+            'data' => $user, 
             'meta' => [
                 'abilities' => $allUserAbilities
             ]
@@ -96,7 +79,6 @@ class AuthController extends Controller
     }
     public function logout(Request $request)
     {
-        // Revoca el token de API actual del usuario
         $request->user()->currentAccessToken()->delete();
 
         return response()->json(['message' => '¡Logout exitoso!']);

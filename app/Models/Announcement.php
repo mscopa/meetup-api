@@ -28,7 +28,6 @@ class Announcement extends Model
      */
     public function scopeForSession(Builder $query, int $meetupSessionId): Builder
     {
-        // Aquí encapsulamos la lógica compleja del whereHas
         return $query->whereHas('administrator.user', function ($q) use ($meetupSessionId) {
             $q->where('meetup_session_id', $meetupSessionId);
         });

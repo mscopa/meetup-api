@@ -13,8 +13,6 @@ class StoreProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // Usamos nuestra ProductPolicy para verificar si el usuario puede crear productos.
-        // Es una doble capa de seguridad junto con la del controlador.
         return $this->user()->can('create', Product::class);
     }
 
@@ -32,9 +30,9 @@ class StoreProductRequest extends FormRequest
                 'max:255',
                 Rule::unique('products')->where('meetup_session_id', $this->user()->meetup_session_id),
             ],
-            'description' => ['nullable', 'string', 'max:1000'], // La descripción es opcional.
-            'price' => ['required', 'numeric', 'min:0'], // El precio es requerido y no puede ser negativo.
-            'stock' => ['required', 'integer', 'min:0'], // El stock es requerido, debe ser un número entero y no negativo.
+            'description' => ['nullable', 'string', 'max:1000'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'stock' => ['required', 'integer', 'min:0'],
         ];
     }
 }

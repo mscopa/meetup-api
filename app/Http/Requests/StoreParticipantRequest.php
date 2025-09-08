@@ -11,13 +11,11 @@ class StoreParticipantRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // Usamos el Gate que ya existe para el check-in
         return $this->user()->can('perform-check-in');
     }
 
     public function rules(): array
     {
-        // Solo validamos los campos mínimos y necesarios
         return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],

@@ -163,8 +163,8 @@ class WordSearchWordSeeder extends Seeder
                 'word' => 'PROTECCION',
                 'start_row' => 11,
                 'start_col' => 1,
-                'end_row' => 10,
-                'end_col' => 2,
+                'end_row' => 2,
+                'end_col' => 10,
             ],
             [
                 'puzzle_id' => 4,
@@ -332,7 +332,7 @@ class WordSearchWordSeeder extends Seeder
                 'word' => 'EXPIACION',
                 'start_row' => 18,
                 'start_col' => 7,
-                'end_row' => 12,
+                'end_row' => 10,
                 'end_col' => 15,
             ],
             [
@@ -490,9 +490,9 @@ class WordSearchWordSeeder extends Seeder
             [
                 'puzzle_id' => 6,
                 'word' => 'ABINADI',
-                'start_row' => 19,
+                'start_row' => 18,
                 'start_col' => 9,
-                'end_row' => 13,
+                'end_row' => 12,
                 'end_col' => 15,
             ],
         ];

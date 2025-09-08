@@ -14,17 +14,10 @@ use Illuminate\Support\Str;
 
 class ProductPurchaseController extends Controller
 {
-    /**
-     * Maneja la acción de comprar uno o más productos por parte de un consejero.
-     */
     public function __invoke(ProductPurchaseRequest $request): JsonResponse
     {
-        // 1. AUTORIZACIÓN: Verificamos con la Policy si el token tiene la habilidad para comprar.
-        // Esta es la primera barrera de seguridad.
         $this->authorize('purchase', Product::class);
 
-        // 2. OBTENER AL CONSEJERO DESDE EL TOKEN:
-        // Esta es la parte nueva y más importante.
         $counselorId = null;
         foreach ($request->user()->currentAccessToken()->abilities as $ability) {
             if (str_starts_with($ability, 'counselor-id:')) {
@@ -33,14 +26,12 @@ class ProductPurchaseController extends Controller
             }
         }
 
-        // Medida de seguridad extra. Si no encontramos el ID, algo está muy mal.
         if (!$counselorId) {
             return response()->json(['message' => 'Acceso denegado: No se pudo verificar la identidad del consejero.'], 403);
         }
 
-        // 3. Obtener los actores principales
         $counselor = Counselor::findOrFail($counselorId);
-        $company = $counselor->company; // A través del consejero, llegamos a su compañía
+        $company = $counselor->company;
         $items = $request->validated()['items'];
         $purchaseCodes = [];
         try {
@@ -48,7 +39,6 @@ class ProductPurchaseController extends Controller
                 $totalCost = 0;
                 $productsToUpdate = [];
 
-                // Primera pasada: Verificaciones
                 foreach ($items as $item) {
                     $product = Product::find($item['product_id']);
                     if ($product->stock < $item['quantity']) {
@@ -66,21 +56,19 @@ class ProductPurchaseController extends Controller
                     ]);
                 }
 
-                // Segunda pasada: Aplicar cambios
                 $company->decrement('coins', $totalCost);
                 foreach ($productsToUpdate as $data) {
                     $product = $data['product'];
                     $quantity = $data['quantity'];
-                    // 1. GENERAMOS EL CÓDIGO Y LO GUARDAMOS EN UNA VARIABLE
                     $newCode = $this->generateUniqueCode();
-                    $purchaseCodes[] = $newCode; // Lo añadimos a nuestro array
+                    $purchaseCodes[] = $newCode;
                     $product->decrement('stock', $quantity);
                     ProductTransaction::create([
                         'product_id' => $product->id,
                         'counselor_id' => $counselor->id,
                         'quantity' => $quantity,
                         'total_price' => $product->price * $quantity,
-                        'retrieval_code' => $newCode, // 2. USAMOS LA VARIABLE PARA GUARDAR
+                        'retrieval_code' => $newCode,
                         'status' => 'pending',
                     ]);
                 }

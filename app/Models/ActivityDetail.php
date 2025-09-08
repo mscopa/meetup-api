@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class ActivityDetail extends Model
 {
     //
-    protected $guarded = []; // Permite asignación masiva
+    protected $guarded = [];
 
     public function activity(): BelongsTo
     {

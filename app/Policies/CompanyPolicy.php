@@ -51,9 +51,6 @@ class CompanyPolicy
      */
     public function update(User $user, Company $company): bool
     {
-        // El usuario puede actualizar la compañía si...
-        // 1. Su token tiene la habilidad de consejero (ej. 'purchase-products')
-        // 2. Y el ID de la compañía del consejero coincide con el ID de la compañía que se quiere editar.
         if (!$user->tokenCan('purchase-products')) {
             return false;
         }

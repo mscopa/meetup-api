@@ -26,14 +26,10 @@ class ProfileController extends Controller
 
         $user->load(['company', 'administrator', 'meetupSession']);
 
-        // 3. Verificamos que el usuario tenga un perfil asignado.
-        // Esta validación es más clara aquí que dentro del Resource.
         if (!$user->company && !$user->administrator) {
             return response()->json(['message' => 'El perfil del usuario no fue encontrado.'], 404);
         }
-
-        // 4. ¡Listo! Devolvemos el nuevo Resource directamente.
-        // Laravel se encargará de convertirlo a JSON con la estructura que definiste.
+        
         return new ProfileHeaderResource($user);
     }
 }

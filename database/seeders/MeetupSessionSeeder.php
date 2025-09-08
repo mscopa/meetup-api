@@ -16,16 +16,16 @@ class MeetupSessionSeeder extends Seeder
         //
         $meetupSessions = [
             [
-                'name' => 'Castelar-Caseros',
-                'location' => 'Arrecifes 1253, Castelar, Buenos Aires',
+                'name' => 'San Isidro-Tigre',
+                'location' => 'Av. del Libertador 1599, San Isidro, Buenos Aires',
             ],
             [
-                'name' => 'Luján-Merlo',
-                'location' => 'Avellaneda 485, Merlo, Buenos Aires',
+                'name' => 'Morón-Haedo',
+                'location' => 'Calle Rivadavia 4500, Haedo, Buenos Aires',
             ],
             [
-                'name' => 'Marcos Paz-Chivilcoy',
-                'location' => 'Av. Dr. Marcos Paz 2329, Ruta 200, Marcos Paz, Buenos Aires',
+                'name' => 'La Plata-Berisso',
+                'location' => 'Calle 12 345, La Plata, Buenos Aires',
             ],
         ];
 

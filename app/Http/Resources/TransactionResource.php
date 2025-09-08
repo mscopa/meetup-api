@@ -20,7 +20,7 @@ class TransactionResource extends JsonResource
             'quantity' => $this->quantity,
             'total_price' => $this->total_price,
             'retrieval_code' => $this->retrieval_code,
-            'status' => $this->status, // 'pending' o 'retrieved'
+            'status' => $this->status, // 'pending' or 'retrieved'
             'purchased_at' => $this->timestamp,
         ];
     }

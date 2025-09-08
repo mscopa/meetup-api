@@ -12,12 +12,10 @@ class TransactionHistoryController extends Controller
 {
     public function __invoke(Request $request)
     {
-        // 1. Verificamos que el usuario tenga permiso para ver el historial.
         if (!$request->user()->tokenCan('view-history')) {
             return response()->json(['message' => 'No autorizado.'], 403);
         }
 
-        // 2. Obtenemos la compañía del consejero.
         $counselorId = null;
         foreach ($request->user()->currentAccessToken()->abilities as $ability) {
             if (str_starts_with($ability, 'counselor-id:')) {
@@ -32,12 +30,11 @@ class TransactionHistoryController extends Controller
 
         $company = Counselor::findOrFail($counselorId)->company;
 
-        // 3. Buscamos todas las transacciones de esa compañía a través de sus consejeros.
         $transactions = ProductTransaction::whereHas('counselor', function ($query) use ($company) {
             $query->where('company_id', $company->id);
         })
-        ->with('product') // Precargamos los nombres de los productos
-        ->latest('created_at') // Ordenamos por más reciente
+        ->with('product')
+        ->latest('created_at')
         ->get();
 
         return TransactionResource::collection($transactions);

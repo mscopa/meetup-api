@@ -22,7 +22,6 @@ class StoreAnnouncementRequest extends FormRequest
      */
     public function rules(): array
     {
-        // 2. Movemos las reglas de validación aquí.
         return [
             'title' => 'required|string|max:255',
             'message' => 'required|string',

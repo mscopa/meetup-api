@@ -20,10 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // El auto-descubrimiento de Policies ya funciona, no tocamos nada ahí.
-
-        // --- DEFINIMOS NUESTRAS HABILIDADES (GATES) ---
-
         // Habilidad para realizar el check-in
         Gate::define('perform-check-in', function ($user) {
             if (!$user->administrator) return false;
@@ -45,7 +41,6 @@ class AppServiceProvider extends ServiceProvider
         // Habilidad para gestionar canjes de productos
         Gate::define('manage-store', function ($user) {
             if (!$user->administrator) return false;
-            // Damos este permiso solo al Matrimonio Director
             return in_array($user->administrator->role, ['Matrimonio Director', 'Caja']);
         });
     }

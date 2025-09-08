@@ -22,10 +22,8 @@ class StoreEarningRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // El ID de la compañía debe existir en la tabla 'companies'
             'company_id' => ['required', 'integer', 'exists:companies,id'],
             'reason' => ['required', 'string', 'max:255'],
-            // Usamos 'present' para asegurarnos de que los campos lleguen, aunque sean 0.
             'coin_amount' => ['present', 'integer', 'min:0'],
             'score_amount' => ['present', 'integer', 'min:0'],
         ];
