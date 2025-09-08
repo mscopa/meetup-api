@@ -20,8 +20,8 @@ class CompanySeeder extends Seeder
                 'name' => 'Los Herederos de Israel',
                 'number' => 1,
                 'war_cry' => '¡Por la fe y la familia!',
-                'score' => 0,
-                'coins' => 0,
+                'score' => 550,
+                'coins' => 70,
                 'room' => 'Primaria',
             ],
             [
@@ -29,8 +29,8 @@ class CompanySeeder extends Seeder
                 'name' => 'Los Valientes de Judá',
                 'number' => 2,
                 'war_cry' => '¡Con valor y honor!',
-                'score' => 0,
-                'coins' => 0,
+                'score' => 750,
+                'coins' => 90,
                 'room' => 'Salón Cultural',
             ],
             [
@@ -38,8 +38,8 @@ class CompanySeeder extends Seeder
                 'name' => 'Los Sabios de Salomón',
                 'number' => 3,
                 'war_cry' => '¡Con sabiduría y fuerza!',
-                'score' => 0,
-                'coins' => 0,
+                'score' => 300,
+                'coins' => 80,
                 'room' => 'Hombres Jóvenes',
             ],
         ];
