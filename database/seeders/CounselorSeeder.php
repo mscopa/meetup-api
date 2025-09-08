@@ -42,7 +42,6 @@ class CounselorSeeder extends Seeder
             'attended' => False,
             'pin' => 'PIN1',
             'checkin' => False,
-            'user_id' => 1,
         ],
         [
             'company_id' => 1,
